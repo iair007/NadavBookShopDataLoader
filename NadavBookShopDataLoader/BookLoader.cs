@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using NadavBookShopDataLoader.Models;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 
 namespace NadavBookShopDataLoader
 {
@@ -30,6 +30,8 @@ namespace NadavBookShopDataLoader
         {
             try
             {
+                _logger.LogDebug("BookLoader.LoadBooksToStore(START)");
+
                 List<Book> allBook = _repository.GetNewBooksFromSource();
                 List<Book> newValidBooks = new List<Book>();
 
@@ -64,8 +66,8 @@ namespace NadavBookShopDataLoader
                 {
                     string targetPath = _repository.LoadDataToStore(newValidBooks);
                     _logger.LogInformation($"csv file was saved: {targetPath}");
-
                 }
+                _logger.LogDebug("BookLoader.LoadBooksToStore(END)");
             }
             catch (Exception ex)
             {
