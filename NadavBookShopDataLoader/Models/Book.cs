@@ -16,5 +16,6 @@ namespace NadavBookShopDataLoader.Models
         public string price { get; set; }
         public string publish_date { get; set; }
         public string description { get; set; }
+
     }
 }
