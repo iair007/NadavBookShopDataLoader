@@ -11,12 +11,16 @@ namespace NadavBookShopDataLoader
 {
     public class BookRepository : IBooksRepository
     {
+        #region Variables
         string SOURCE_PATH_KEY = "SourcePath";
         string TARGET_PATH_KEY = "TargetPath";
         private string _configPath;
         string[] _skipAuthors;
         Dictionary<string, string> _configDic = new Dictionary<string, string>();
 
+        #endregion Variables
+
+        #region constructor
         public BookRepository()
         {
             _configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "NadavBookShopDataLoader", "BookLoaderConfig.json");
@@ -24,8 +28,10 @@ namespace NadavBookShopDataLoader
             GetDataFromConfig();
         }
 
+        #endregion constructor
+       
         #region SourceTarget Config
-    
+
         /// <summary>
         /// Will show to the user the source and target directory and give the option to change
         /// </summary>
@@ -110,12 +116,12 @@ namespace NadavBookShopDataLoader
         }
 
         #endregion SourceTarget Config
-    
+
         /// <summary>
-        /// Will get data from ALL the JSon files in SOURCE_PATH
+        /// Will get data from ALL the JSon files in _configDic[SOURCE_PATH_KEY]
         /// </summary>
         /// <returns></returns>
-        public List<Book> GetNewBooks()
+        public List<Book> GetNewBooksFromSource()
         {
             SetSourceTargetDir();
 
@@ -151,7 +157,7 @@ namespace NadavBookShopDataLoader
 
         /// <summary>
         /// A valid book is a book that was not published on Saturday
-        /// and the Author's name does not include the word 'Peter' (or any other word in ArrSkipAuthors)
+        /// and the Author's name does not include the word 'Peter' (or any other word in _skipAuthors)
         /// </summary>
         /// <param name="book"></param>
         /// <returns></returns>
@@ -175,8 +181,9 @@ namespace NadavBookShopDataLoader
         /// <summary>
         /// will check that all the properties of the Book have data.
         /// That the publish_date is a valid Date
+        /// That the price is a valid decimal
         /// </summary>
-        /// <param name="b"></param>
+        /// <param name="book"></param>
         /// <returns></returns>
         public string CheckBookDataIsValid(Book book)
         {

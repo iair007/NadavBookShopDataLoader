@@ -14,20 +14,23 @@ namespace NadavBookShopDataLoader
         public BookRepository _repository { get; }
         #endregion Variables
 
-        #region Constroctor
+        #region constructor
         public BookLoader(BookRepository repository, ILogger<BookLoader> logger)
         {
             _repository = repository;
             _logger = logger;
         }
 
-        #endregion Constroctor
+        #endregion constructor
 
+        /// <summary>
+        /// Will get New Books and load to store
+        /// </summary>
         public void LoadBooksToStore()
         {
             try
             {
-                List<Book> allBook = _repository.GetNewBooks();
+                List<Book> allBook = _repository.GetNewBooksFromSource();
                 List<Book> newValidBooks = new List<Book>();
 
                 _logger.LogInformation($"Got {allBook.Count} new Books");

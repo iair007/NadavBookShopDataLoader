@@ -8,7 +8,7 @@ namespace NadavBookShopDataLoader.Interface
     interface IBooksRepository
     {
         
-        public List<Book> GetNewBooks();
+        public List<Book> GetNewBooksFromSource();
 
         //Set the rules to set a book valid to sell
         public bool IsBookValidToSell(Book b);

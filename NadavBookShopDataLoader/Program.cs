@@ -9,6 +9,7 @@ namespace NadavBookShopDataLoader
     {
         static void Main(string[] args)
         {
+            //create Loogger
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
 
