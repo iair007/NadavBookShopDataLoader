@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Extensions.Logging;
+using NadavBookShopDataLoader.Interface;
 using NadavBookShopDataLoader.Interfaces;
 using NadavBookShopDataLoader.Models;
 using NadavBookShopDataLoader.Validators;
@@ -14,14 +15,14 @@ namespace NadavBookShopDataLoader
     {
         #region Variables
         private readonly ILogger _logger;
-        public GetBooksRepository _getBooksRepository;
-        public SaveBooksRepository _saveBooksRepository;
+        public IGetBooksRepository _getBooksRepository;
+        public ISaveBooksRepository _saveBooksRepository;
 
         List<IValidate> _bookValidationsList;
         #endregion Variables
 
         #region constructor
-        public BookLoader(GetBooksRepository getBooksRepository, SaveBooksRepository saveBooksRepository
+        public BookLoader(IGetBooksRepository getBooksRepository, ISaveBooksRepository saveBooksRepository
                         , List<IValidate> bookValidationsList, ILogger logger)
         {
             _bookValidationsList = bookValidationsList;
