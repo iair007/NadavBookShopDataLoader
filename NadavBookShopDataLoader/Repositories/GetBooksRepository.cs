@@ -103,7 +103,7 @@ namespace NadavBookShopDataLoader
 
                         break;
                     default:
-                        Console.Write("Invalid Input, please select one of the valid options 1,2,3,4");
+                        Console.Write($"Invalid Input, please select one of the valid options {Environment.NewLine}");
                         break;
                 }
                 Console.Write(mainMessage);
