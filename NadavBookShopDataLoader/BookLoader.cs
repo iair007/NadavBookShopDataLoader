@@ -84,8 +84,9 @@ namespace NadavBookShopDataLoader
                 if (invalidBooks.Count > 0)
                 {
                     _saveBooksRepository.SaveBooks(invalidBooks,
-                                                            ConfigFile.ConfigDict[ConfigFile.TARGET_PATH_KEY],
-                                                            $"InvalidBooksInFile_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.csv");
+                                          ConfigFile.ConfigDict[ConfigFile.TARGET_PATH_KEY],
+                                          $"InvalidBooksInFile_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.csv");
+                    _logger.LogInformation($"csv file with invalid books was saved: {ConfigFile.ConfigDict[ConfigFile.TARGET_PATH_KEY]}");
                 }
                 _logger.LogDebug("BookLoader.LoadBooksToStore(END)");
             }
